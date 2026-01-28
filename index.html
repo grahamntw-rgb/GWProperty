@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dubai Dream Off Plan</title>
+  <meta name="description" content="Invest in Your Dream Property" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <img src="assets/logo.svg" alt="Dubai Dream Off Plan" class="brand-logo" />
+        <span class="brand-text">Dubai Dream Off Plan</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero" aria-label="Hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <h1>Invest in Your Dream Property</h1>
+        <p class="hero-sub">
+          Discover off-plan opportunities in Dubai and get updates when new properties become available.
+        </p>
+
+        <div class="hero-card">
+          <h2 id="contact">Contact Us</h2>
+          <hr />
+
+          <h3>Drop us a line!</h3>
+
+          <!-- Note: This is a static form. Hook it to Netlify Forms / Formspree / your backend later. -->
+          <form class="contact-form" action="#" method="post">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" autocomplete="name" placeholder="Your name" />
+            </label>
+
+            <label>
+              <span>Email*</span>
+              <input type="email" name="email" autocomplete="email" required placeholder="name@email.com" />
+            </label>
+
+            <label class="checkbox">
+              <input type="checkbox" name="newsletter" />
+              <span>Sign up for our email list for updates, promotions, and more.</span>
+            </label>
+
+            <button type="submit">Send</button>
+
+            <p class="fineprint">
+              This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.
+            </p>
+          </form>
+        </div>
+
+        <footer class="site-footer">
+          <p>Copyright © 2025 Dubai Dream Off Plan - All Rights Reserved.</p>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <!-- Cookie banner -->
+  <div class="cookie" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie notice">
+    <div class="cookie-inner container">
+      <div>
+        <strong>This website uses cookies.</strong>
+        <p>
+          We use cookies to analyze website traffic and optimize your website experience.
+          By accepting our use of cookies, your data will be aggregated with all other user data.
+        </p>
+      </div>
+      <button class="cookie-btn" id="cookieAccept">Accept</button>
+    </div>
+  </div>
+
+  <script>
+    // Simple cookie banner persistence (no tracking; just hides the banner)
+    (function () {
+      const key = "ddop_cookie_accepted";
+      const banner = document.getElementById("cookieBanner");
+      const btn = document.getElementById("cookieAccept");
+      try {
+        if (localStorage.getItem(key) === "1") banner.classList.add("hidden");
+        btn.addEventListener("click", () => {
+          localStorage.setItem(key, "1");
+          banner.classList.add("hidden");
+        });
+      } catch (e) {
+        // If storage blocked, still allow dismiss for the session
+        btn.addEventListener("click", () => banner.classList.add("hidden"));
+      }
+    })();
+  </script>
+</body>
+</html>
