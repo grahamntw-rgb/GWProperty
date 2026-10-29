@@ -1,0 +1,137 @@
+backend:
+  name: github
+  repo: chrisjgaze/GWProperty
+  branch: main
+
+site_url: https://dubaidreamoffplan.com
+display_url: https://dubaidreamoffplan.com
+logo_url: /favicon.svg
+show_preview_links: false
+
+media_folder: public/uploads
+public_folder: /uploads
+
+editor:
+  preview: false
+
+collections:
+  - name: custom_properties
+    label: Custom properties
+    label_singular: Property
+    description: Add and manage properties created by your team.
+    folder: public/custom-properties
+    create: true
+    delete: true
+    extension: json
+    format: json
+    identifier_field: name
+    summary: "{{name}} — {{community}} — {{property_type}}"
+    sortable_fields:
+      - name
+      - community
+      - developer
+      - completion_date
+    view_filters:
+      - label: Featured
+        field: featured
+        pattern: true
+      - label: Available
+        field: sales_status
+        pattern: Available
+      - label: Off-plan
+        field: sales_status
+        pattern: Off-plan
+    fields:
+      - label: Property ID
+        name: id
+        widget: string
+        hint: "Required unique ID, for example: marina-view-1204."
+      - label: Property name
+        name: name
+        widget: string
+      - label: Property type
+        name: property_type
+        widget: select
+        default: Apartment
+        options:
+          - Apartment
+          - Villa
+          - Townhouse
+          - House
+          - Penthouse
+          - Duplex
+          - Studio
+          - Land
+          - Commercial
+          - Other
+      - label: Cover image
+        name: image
+        widget: image
+      - label: Community
+        name: community
+        widget: string
+      - label: Developer
+        name: developer
+        widget: string
+        required: false
+      - label: Sales status
+        name: sales_status
+        widget: select
+        options:
+          - Available
+          - Reserved
+          - Sold
+          - Off-plan
+        default: Available
+      - label: Completion date
+        name: completion_date
+        widget: string
+        required: false
+        hint: "For example: Q3 2027 or Ready."
+      - label: Featured property
+        name: featured
+        widget: boolean
+        default: false
+      - label: Starting price (AED)
+        name: price
+        widget: number
+        value_type: int
+        min: 0
+        required: false
+        hint: "Optional headline price shown on the property card."
+      - label: Latitude
+        name: latitude
+        widget: number
+        value_type: float
+        min: -90
+        max: 90
+        required: false
+        hint: "Optional. Used to show the property on the map."
+      - label: Longitude
+        name: longitude
+        widget: number
+        value_type: float
+        min: -180
+        max: 180
+        required: false
+        hint: "Optional. Used to show the property on the map."
+      - label: Units and prices
+        name: unit_variations
+        widget: list
+        required: false
+        summary: "{{fields.unit_type}} — {{fields.starting_price}}"
+        fields:
+          - label: Unit type
+            name: unit_type
+            widget: string
+            hint: "For example: 3 bedroom villa or 2 B/R apartment."
+          - label: Starting price
+            name: starting_price
+            widget: string
+            required: false
+            hint: "For example: 1.5 M or 950 K."
+      - label: Marketing label
+        name: label
+        widget: string
+        required: false
+        hint: "For example: Launch prices or Limited availability."
